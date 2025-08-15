@@ -53,6 +53,62 @@ Sends data to the server in JSON format.
 
 ---
 
+## 🚀 Running Requests in Python
+
+### Install the `requests` library
+```bash
+pip install requests
+```
+Installs the `requests` library for sending HTTP requests.
+
+### Example: Simple GET request
+```python
+import requests
+
+url = "https://jsonplaceholder.typicode.com/posts/1"
+response = requests.get(url)
+
+print("Status Code:", response.status_code)
+print("Response JSON:", response.json())
+```
+Sends a GET request and prints status code & JSON response.
+
+### Example: Simple POST request
+```python
+import requests
+
+url = "https://reqres.in/api/users"
+payload = {"name": "John", "job": "developer"}
+
+response = requests.post(url, json=payload)
+
+print("Status Code:", response.status_code)
+print("Response JSON:", response.json())
+```
+Sends a POST request with JSON body and prints response.
+
+### Running your Python script
+```bash
+python myscript.py
+```
+Runs the script containing your requests code.
+
+### Using `requests` inside Pytest
+```python
+import requests
+
+def test_get_post():
+    r = requests.get("https://jsonplaceholder.typicode.com/posts/1")
+    assert r.status_code == 200
+    assert r.json()["id"] == 1
+```
+Run the test:
+```bash
+pytest -v
+```
+
+---
+
 ## 🧪 Pytest Commands
 
 ### Run all tests in current directory
@@ -155,3 +211,4 @@ Logs structured data for better readability and filtering.
 - [Public APIs List](https://github.com/public-apis/public-apis) → Collection of free APIs
 
 ---
+
